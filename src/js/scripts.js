@@ -21,7 +21,30 @@ function increment()
     document.getElementById("nbrPanier").innerText = number;
 }
 
+function incrementPanier(id)
+{
+    var numero = document.getElementById("text"+id).value;
+    var newnum = parseInt(numero) + 1;
+    document.getElementById("text"+id).value = newnum;
+}
+
+function decrementPanier(id)
+{
+    var numero = document.getElementById("text"+id).value;
+    if(numero == 1)
+    {
+        return;
+    }
+    var newnum = parseInt(numero) - 1;
+    document.getElementById("text"+id).value = newnum;
+}
+
 function refreshpanier()
 {
     document.getElementById("nbrPanier").innerText = number;   
+}
+
+function suppression(number)
+{
+    document.getElementById("tr"+number).remove();
 }

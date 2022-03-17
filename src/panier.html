@@ -60,6 +60,34 @@
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <h1>Votre panier</h1>
                 </div>
+                <div class="produits">
+                    <table class="table">
+                        <thead class="thead">
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Suppression</th>
+                        </thead>
+                        <tbody class="tbody">
+                            <tr id="tr1">
+                                <td>Peinture 1</td>
+                                <td>50€</td>
+                                <td><input type="button" value="-" onclick="decrementPanier(1);" size="1"><input class="form-control-sm" id="text1" type="text" value="1" size="1"><input type="button" value="+" onclick="incrementPanier(1);" size="1"></td>
+                                <td><input class="btn btn-outline-danger" type="button" onclick="suppression(1)"; value="Supprimer"></td>
+                            </tr>
+                            <tr id="tr2">
+                                <td>Peinture 2</td>
+                                <td>90€</td>
+                                <td><input type="button" value="-" onclick="decrementPanier(2);" size="1"><input class="form-control-sm" id="text2" type="text" value="1" size="1"><input type="button" value="+" onclick="incrementPanier(2);" size="1"></td>
+                                <td><input class="btn btn-outline-danger" type="button" onclick="suppression(2)"; value="Supprimer"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <input class="btn btn-success" type="button" value="Payer">
+                    <input class="btn btn-danger" type="button" value="Annuler">
+                </div>
             </div>
         </section>   
         <!-- Footer-->
