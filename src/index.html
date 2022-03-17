@@ -13,7 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body onload="refreshpanier()">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -21,12 +21,12 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Nous contacter</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Nous contacter</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Toutes nos peintures</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Toutes nos peintures</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><a class="dropdown-item" href="#!">Tous les produits</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Populaires</a></li>
                                 <li><a class="dropdown-item" href="#!">Nouvel arrivage</a></li>
@@ -36,17 +36,17 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button class="btn btn-outline-dark" href="panier.html">
                             <i class="bi-cart-fill me-1"></i>
                             Panier
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span id="nbrPanier" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
                 </div>
             </div>
         </nav>
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-dark py-1">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Nos peintures</h1>
@@ -61,19 +61,21 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="/assets/img/image1.PNG" alt="..." />
+                            <img class="card-img-top" src="assets/img/image1.PNG"/>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h5 class="fw-bolder">Produit simple</h5>
                                     <!-- Product price-->
-                                    €40.00 - €80.00
+                                    40€ - 80€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Voir Option</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" >Voir Produit</a></div>
+                                <br>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
@@ -82,12 +84,12 @@
                             <!-- Promo badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promo</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/assets/img/image2.PNG" alt="..." />
+                            <img class="card-img-top" src="assets/img/image2.PNG" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
+                                    <h5 class="fw-bolder">Produit spécial</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -97,13 +99,13 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">€20.00</span>
-                                    €18.00
+                                    <span class="text-muted text-decoration-line-through">20€</span>
+                                    18€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
@@ -112,32 +114,32 @@
                             <!-- Promo badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promo</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/assets/img/image3.PNG" alt="..." />
+                            <img class="card-img-top" src="assets/img/image3.PNG" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Promo Item</h5>
+                                    <h5 class="fw-bolder">Promotion !</h5>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">€50.00</span>
-                                    €25.00
+                                    <span class="text-muted text-decoration-line-through">50€</span>
+                                    25€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="/assets/img/image1.PNG" alt="..." />
+                            <img class="card-img-top" src="assets/img/image1.PNG" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
+                                    <h5 class="fw-bolder">Produit populaire</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -147,12 +149,12 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    €40.00
+                                    40€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
@@ -161,20 +163,69 @@
                             <!-- Promo badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promo</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="/assets/img/image2.PNG" alt="..." />
+                            <img class="card-img-top" src="assets\img\image2.PNG" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Promo Item</h5>
+                                    <h5 class="fw-bolder">Promotion !</h5>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">€50.00</span>
-                                    €25.00
+                                    <span class="text-muted text-decoration-line-through">50€</span>
+                                    25€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets\img\image3.PNG" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Produit simple</h5>
+                                    <!-- Product price-->
+                                    120€ - 280€
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" >Voir Produit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Promo badge-->
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promo</div>
+                            <!-- Product image-->
+                            <img class="card-img-top" src="assets\img\image2.PNG" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Produit spécial</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    <!-- Product price-->
+                                    <span class="text-muted text-decoration-line-through">20€</span>
+                                    18€
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
@@ -186,28 +237,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    €120.00 - €280.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Voir Option</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Promo badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Promo</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://media.adeo.com/marketplace/LMFR/79979592/fabcbc8f-3463-49a0-92ef-db44b9672d93.jpeg?width=650&height=650&format=jpg&quality=80&fit=bounds" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
+                                    <h5 class="fw-bolder">Produit populaire</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -217,40 +247,12 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">€20.00</span>
-                                    €18.00
+                                    40€
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://media.adeo.com/marketplace/LMFR/79979592/fabcbc8f-3463-49a0-92ef-db44b9672d93.jpeg?width=650&height=650&format=jpg&quality=80&fit=bounds" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    €40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="increment();" >Ajouter au panier</a></div>
                             </div>
                         </div>
                     </div>
